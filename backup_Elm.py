@@ -126,7 +126,13 @@ while row < len(backup_paths_df):
             print("Path %s does not exist. Skipping." % curr_path)
             path_counter += 1
             continue
-
+        
+        # Check if the path is a file
+        if os.path.isfile(curr_path):
+            print("Path %s is a file, not a directory. Skipping." % curr_path)
+            path_counter += 1
+            continue
+        
         # Check if the path is an empty directory
         if len(os.listdir(curr_path)) == 0:
             print("Path %s is an empty directory. Skipping." % curr_path)
